@@ -1,0 +1,41 @@
+.main {
+    max-width: 680px !important;
+    margin: auto;
+}
+
+.previews {
+    margin-top: 2rem;
+    gap: 1rem;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+    padding-bottom: 0.7rem;
+}
+
+.previews::-webkit-scrollbar {
+    height: 0.7rem;
+}
+
+.previews::-webkit-scrollbar-track {
+    background-color: rgba(128, 128, 128, 0.473);
+    border-radius: 40rem;
+}
+
+.previews::-webkit-scrollbar-thumb {
+    background-color: #636cff;
+    border-radius: 40rem;
+}
+
+.preview {
+    scroll-snap-align: start;
+    width: 200px;
+    height: 200px;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.tile {
+    margin-top: 1rem;
+    min-width: 100%;
+    min-height: 7rem;
+}
