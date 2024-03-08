@@ -10,6 +10,7 @@
     scroll-snap-type: x proximity;
     scroll-behavior: smooth;
     padding-bottom: 0.7rem;
+    mask-image: linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%);
 }
 
 .previews::-webkit-scrollbar {
@@ -27,7 +28,7 @@
 }
 
 .preview {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     width: 200px;
     height: 200px;
     min-height: 200px;
