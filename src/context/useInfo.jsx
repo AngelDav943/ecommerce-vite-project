@@ -50,8 +50,8 @@ export function InfoProvider({ children }) {
                 uid: data["uid"]
             }
 
-            localStorage.setItem("ecom_user", newUserData);
-            setUserData(JSON.stringify(newUserData));
+            localStorage.setItem("ecom_user", JSON.stringify(newUserData));
+            setUserData(newUserData);
         },
         googleSignIn: async () => {
             try {
