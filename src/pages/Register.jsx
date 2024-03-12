@@ -1,11 +1,9 @@
-import { Box, Stack, Typography, Button, TextField, Paper } from '@mui/material';
+import { Box, Stack, Typography, TextField, Paper } from '@mui/material';
 import './login.css'
 import { useNavigate } from 'react-router-dom';
+import TextButton from '../components/TextButton';
 
 export default function () {
-
-
-    const navigate = useNavigate();
 
     return <Stack className='login' justifyContent="center" alignItems="strech" gap={"1rem"}>
 
@@ -21,11 +19,7 @@ export default function () {
             label="Password"
             type='password'
         />
-        <Button variant="contained" className='submit'>
-            Register
-        </Button>
-        <Button variant="outlined" className='register' onClick={() => navigate('/login')}>
-            Log in
-        </Button>
+        <TextButton label='Register' variant="contained"/>
+        <TextButton label='Log in' variant="outlined" to='/login'/>
     </Stack>
 }

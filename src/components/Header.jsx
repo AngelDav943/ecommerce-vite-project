@@ -1,8 +1,10 @@
 
 import AppBar from '@mui/material/AppBar';
-import { Box, Toolbar, Typography, Avatar, Button, Container } from '@mui/material';
+import { Box, Toolbar, Typography, Avatar, Container, TextField, InputAdornment } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useInfo } from '../context/useInfo';
+
+import TextButton from './TextButton';
 
 import { Search } from '@mui/icons-material';
 
@@ -12,10 +14,6 @@ export default function SearchAppBar() {
     const navigate = useNavigate();
     function home() {
         navigate('/')
-    }
-
-    function loginClick() {
-        navigate('/login')
     }
 
     return (
@@ -36,14 +34,23 @@ export default function SearchAppBar() {
                         LOGO
                     </Typography>
 
-                    <Container sx={{flexGrow: 1}}>
-                        <Search />
+                    <Container sx={{flexGrow:1}}/>
 
-                    </Container>
+                    {/* <TextField
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Search />
+                                </InputAdornment>
+                            ),
+                        }}
+                        sx={{ margin:"0 2rem", flexGrow: 1 }}
+                        label="Search"
+                    /> */}
 
                     {user ?
                         <Avatar alt='John doe' src={user.photoURL} />
-                        : <Button onClick={() => loginClick()} sx={{ my: 2, color: 'white', display: 'block' }}>Log in</Button>
+                        : <TextButton label='Log in' to='/login' sx={{ color: 'white' }}/>
                     }
 
                 </Toolbar>

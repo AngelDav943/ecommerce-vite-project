@@ -9,7 +9,7 @@ export const useInfo = () => {
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,24 +30,43 @@ export function InfoProvider({ children }) {
     const [userData, setUserData] = useState(null);
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const infoValues = {
         user: userData,
+        setUser: (data) => {
+            if (data == null){
+                setUserData(null);
+                return;
+            }
+
+            const newUserData = {
+                photoURL: data["photoURL"],
+                displayName: data["displayName"],
+                email: data["email"],
+                providerData: data["providerData"],
+                metadata: data["metadata"],
+                accessToken: data["accessToken"],
+                uid: data["uid"]
+            }
+
+            localStorage.setItem("ecom_user", newUserData);
+            setUserData(JSON.stringify(newUserData));
+        },
         googleSignIn: async () => {
             try {
-                console.log("logging...")
                 const user = await signInWithPopup(auth, provider);
                 if (user && user.user) {
-                    setUserData(user.user)
-                    console.log(user.user)
+                    infoValues.setUser(user)
+                    if (location.state["last"]) {
+                        navigate(location.state["last"])
+                        return;
+                    }
                 }
             } catch (err) {
                 console.log("error..", err)
             }
             navigate('/')
-        },
-        setUser: (data) => {
-
         },
         logout: () => {
 
@@ -55,7 +74,15 @@ export function InfoProvider({ children }) {
     }
 
     useEffect(() => {
-
+        if (userData == null) {
+            try {
+                const savedUser = JSON.parse(localStorage.getItem("ecom_user"))
+                if (savedUser && savedUser["email"]) setUserData(savedUser)
+            } catch (err) {
+                console.log("A!")
+                console.error(err)
+            }
+        }
     }, [])
 
     return (

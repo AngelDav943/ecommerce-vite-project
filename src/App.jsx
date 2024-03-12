@@ -8,6 +8,7 @@ import Header from './components/Header.jsx'
 import { Container } from '@mui/material';
 
 import { InfoProvider } from './context/useInfo.jsx'
+import Product from './pages/ProductView.jsx'
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
     <Container className='main'>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/product" element={<Homepage />} />
+        <Route path="/product/:id" element={<Product />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={< Register />} />
       </Routes>

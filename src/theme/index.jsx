@@ -34,6 +34,19 @@ const themeData = createTheme({
     typography: {
         fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif'
     },
+    components: {
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                            borderColor: "white",
+                        },
+                    }
+                }
+            }
+        }
+    }
 });
 
 const theme = responsiveFontSizes(themeData);
