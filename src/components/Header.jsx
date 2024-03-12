@@ -49,7 +49,7 @@ export default function SearchAppBar() {
                     /> */}
 
                     {user ?
-                        <Avatar alt='John doe' src={user.photoURL} />
+                        <Avatar alt={user.displayName} src={user.photoURL} />
                         : <TextButton label='Log in' to='/login' sx={{ color: 'white' }}/>
                     }
 

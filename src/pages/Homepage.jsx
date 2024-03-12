@@ -1,11 +1,16 @@
 import { Box, Stack, Typography, Skeleton, Container } from '@mui/material';
 import { useInfo } from '../context/useInfo';
 
+import TextButton from '../components/TextButton';
+
 export default function () {
-    const {user} = useInfo();
+    const {user, logout} = useInfo();
 
     return <>
-        {user && <Stack sx={{marginTop:"2rem"}}>
+	{/*
+	<TextButton label="logout" onClick={()=> logout()}/>
+        */}
+	{user && <Stack sx={{marginTop:"2rem"}}>
             <Typography variant='h4'>Welcome back, {user.displayName}</Typography>
         </Stack>}
         <Stack direction="row" className='previews'>
