@@ -57,7 +57,7 @@ export function InfoProvider({ children }) {
             try {
                 const user = await signInWithPopup(auth, provider);
                 if (user && user.user) {
-                    infoValues.setUser(user)
+                    infoValues.setUser(user.user)
                     if (location.state["last"]) {
                         navigate(location.state["last"])
                         return;
@@ -69,7 +69,8 @@ export function InfoProvider({ children }) {
             navigate('/')
         },
         logout: () => {
-
+            setUserData(null);
+            localStorage.setItem("ecom_user", "")
         },
     }
 
@@ -79,7 +80,6 @@ export function InfoProvider({ children }) {
                 const savedUser = JSON.parse(localStorage.getItem("ecom_user"))
                 if (savedUser && savedUser["email"]) setUserData(savedUser)
             } catch (err) {
-                console.log("A!")
                 console.error(err)
             }
         }

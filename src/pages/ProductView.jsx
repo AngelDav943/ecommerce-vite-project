@@ -16,8 +16,9 @@ export default function () {
 
     return <Stack className='product' direction='row' justifyContent="space-between" flexWrap="wrap">
         <Container sx={{flexGrow:1}}>
+            <br />
             <Typography>ID: {params["id"]}</Typography>
-
+            <br />
         </Container>
         <Container sx={{flexGrow:1, flexBasis:"100px"}}>
             <Skeleton variant='rectangular' className='preview'/>
@@ -28,7 +29,7 @@ export default function () {
             <Skeleton variant='text' sx={{fontSize:"4rem"}}/>
             <Skeleton variant='text' sx={{fontSize:"2rem"}}/>
             <br />
-            <TextButton label='Buy' onClick={() => onBuy()} />
+            <TextButton variant='contained' label='Buy' onClick={() => onBuy()} />
         </Stack>
     </Stack>
 }
