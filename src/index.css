@@ -1,6 +1,7 @@
 .main {
     max-width: 680px !important;
     margin: auto;
+    padding-top: 4rem;
 }
 
 .previews {
@@ -25,18 +26,4 @@
 .previews::-webkit-scrollbar-thumb {
     background-color: #636cff;
     border-radius: 40rem;
-}
-
-.preview {
-    scroll-snap-align: center;
-    width: 200px;
-    height: 200px;
-    min-height: 200px;
-    min-width: 200px;
-}
-
-.tile {
-    margin-top: 1rem;
-    min-width: 100%;
-    min-height: 7rem;
 }

@@ -1,16 +1,16 @@
-import { Container, Skeleton } from '@mui/material';
+import { Container, Skeleton, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+import './preview.css'
 
 // TODO: add product preview variants
-export default function({
-    product = null,
-    variant = 'icon'
-}) {
+export default function({ product = null, variant = 'icon'}) {
 
-    if (product == null) return {
-	<Skeleton variant="rectangular" />
-    }
+    if (product == null) return (
+        <Link to="/product/0">
+            <Skeleton variant='rectangular' className={`preview ${variant}`} />
+        </Link>
+    )
 
-    return {
-	<Typography>Not implemented</Typography>
-    }
+    return <Typography>not implemented</Typography>
 }

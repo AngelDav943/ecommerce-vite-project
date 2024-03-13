@@ -1,0 +1,13 @@
+.preview.icon {
+    scroll-snap-align: center;
+    width: 200px;
+    height: 200px;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.preview.tile {
+    margin-top: 1rem;
+    min-width: 100%;
+    min-height: 7rem;
+}
