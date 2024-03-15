@@ -8,7 +8,9 @@ export default function TextButton({
     onClick = null,
     variant = "text",
     sx = null,
-    to = ""
+    to = "",
+    disabled = false,
+    expanded = false
 }) {
     const navigate = useNavigate();
 
@@ -19,8 +21,10 @@ export default function TextButton({
 
     return (
         <Button
+            disabled={disabled}
             onClick={() => internalClick()}
             sx={{
+                width: expanded ? "100%" : "auto",
                 textTransform: !capitalize ? "capitalize" : "uppercase",
                 ...sx
             }}

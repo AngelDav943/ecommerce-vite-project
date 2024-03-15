@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Box, Stack, Typography, Skeleton, Container } from '@mui/material';
 import { useInfo } from '../context/useInfo';
 
 import TextButton from '../components/TextButton';
 import Preview from '../components/Preview';
+import useProduct from '../hooks/useProduct';
 
 export default function () {
     const { user, logout } = useInfo();
+    const { getAllProducts, products } = useProduct();
+
+    useEffect(() => {
+        getAllProducts();
+    }, [])
+
 
     return <>
         {/*
@@ -18,14 +25,15 @@ export default function () {
         </Stack>}
 
         <Stack direction="row" className='previews'>
-            {Array.from(Array(20).keys()).map(index => (
-                <Preview key={index} />
+            {Array.from(Array(10).keys()).map(index => (
+                <Preview key={index} product={products[index]} />
             ))}
         </Stack>
         <Stack>
-            {Array.from(Array(10).keys()).map(index => (
-                <Preview key={index} variant='tile' />
+            {Array.from(Array(5).keys()).map(index => (
+                <Preview key={index} product={products[index + 10]} variant='tile' />
             ))}
+            <TextButton label='Discover more' to='/discover' expanded />
         </Stack>
     </>
 }
