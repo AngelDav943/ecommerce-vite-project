@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Box, Stack, Typography, Skeleton, Container, Pagination } from '@mui/material';
 import { useInfo } from '../context/useInfo';
@@ -9,13 +10,18 @@ import useProduct from '../hooks/useProduct';
 
 export default function () {
     const { user, logout } = useInfo();
-    const { getAllProducts, products, totalPages } = useProduct();
+    const { searchProduct, products, totalPages } = useProduct();
 
+    const [searchParams, setSearchParams] = useSearchParams();
     const [viewingPage, setViewingPage] = useState(1);
 
     useEffect(() => {
-        getAllProducts(viewingPage);
-    }, [viewingPage])
+        setViewingPage(1)
+    }, [searchParams])
+
+    useEffect(() => {
+        searchProduct(searchParams.get("query"), viewingPage);
+    }, [searchParams, viewingPage])
 
 
     return <>

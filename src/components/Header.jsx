@@ -18,7 +18,7 @@ import { useInfo } from '../context/useInfo';
 
 import TextButton from './TextButton';
 
-import { Search, ShoppingCart } from '@mui/icons-material';
+import { Search, Send, ShoppingCart } from '@mui/icons-material';
 import { useState } from 'react';
 
 export default function SearchAppBar() {
@@ -37,6 +37,17 @@ export default function SearchAppBar() {
     const handleCloseUserMenu = () => {
         setAvatarMenu(null);
     };
+
+    const [searchInput, setSearchInput] = useState("");
+    function onKeyPress(event) {
+        setSearchInput(event.target.value)
+        if (event.keyCode == 13) startSearch()
+    }
+
+    function startSearch() {
+        // console.log("search!!", searchInput)
+        if (searchInput.replace(/ /g, "") != "") navigate(`/search?query=${searchInput}`, { replace: true })
+    }
 
     return (
         <Box sx={{ flexGrow: 1, position: "static" }}>
@@ -69,6 +80,11 @@ export default function SearchAppBar() {
                                     <Search />
                                 </InputAdornment>
                             ),
+                            endAdornment: (
+                                <InputAdornment position="end" sx={{ cursor: 'pointer' }} onClick={() => startSearch()}>
+                                    <Send sx={{ color: 'white', padding: '0.05rem' }} />
+                                </InputAdornment>
+                            ),
                         }}
 
                         sx={{
@@ -76,6 +92,8 @@ export default function SearchAppBar() {
                             margin: "0 3.5rem",
                             flexGrow: 1
                         }}
+
+                        onKeyUp={(e) => onKeyPress(e)}
                     />
 
                     <Link to='/cart'>

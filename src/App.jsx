@@ -10,6 +10,7 @@ import { Container } from '@mui/material';
 import { InfoProvider } from './context/useInfo.jsx'
 import Product from './pages/ProductView.jsx'
 import Discover from './pages/Discover.jsx'
+import Search from './pages/Search.jsx'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/discover" element={<Discover />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/product" element={<Homepage />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/login" element={<Login />} />

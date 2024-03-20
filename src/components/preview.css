@@ -2,6 +2,11 @@
     text-decoration: none;
 }
 
+.preview .item {
+    width: 100%;
+    height: 100%;
+}
+
 .preview.icon img {
     width: 100%;
     height: 100%;
@@ -14,6 +19,11 @@
     height: 100%;
     max-width: 200px;
     object-fit: cover;
+}
+
+.preview.tile .item {
+    display: flex;
+    flex-direction: row;
 }
 
 .preview.icon {
@@ -73,6 +83,4 @@
 
 .preview.tile {
     display: flex;
-    background-color: gray;
-
 }

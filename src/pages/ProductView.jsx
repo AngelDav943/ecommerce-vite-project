@@ -50,12 +50,24 @@ export default function () {
             <br />
         </Container>
         <Container sx={{ flexGrow: 1, flexBasis: "100px" }}>
-            <Skeleton variant='text' sx={{ fontSize: "4rem", display: { xs: 'inherit', sm: 'none' } }} />
+            <Container sx={{ fontSize: "4rem", display: { xs: 'contents', sm: 'none' } }}>
+                {product == null ?
+                    <Skeleton variant='text' />
+                    : <Typography variant='h3'>{product.title}</Typography>
+                }
+                <br />
+            </Container>
             <Preview />
             {/* {product == null && } */}
             <br />
             <Stack sx={{ flexGrow: 1, display: { xs: 'inherit', sm: 'none' } }}>
-                <Skeleton variant='text' sx={{ fontSize: "2rem" }} />
+                <Container sx={{ fontSize: "4rem", display: { xs: 'contents', sm: 'none' } }}>
+                    {product == null ?
+                        <Skeleton variant='text' sx={{ fontSize: "2rem" }}  />
+                        : <Typography variant='h5'>${product.price}</Typography>
+                    }
+                    <br />
+                </Container>
                 <TextButton
                     sx={{ width: "100%" }}
                     variant='contained'
