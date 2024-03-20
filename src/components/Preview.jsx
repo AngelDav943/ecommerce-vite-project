@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import './preview.css'
 
-// TODO: add product preview variants
 export default function ({ product = null, variant = 'icon' }) {
 
     if (product == null) return (

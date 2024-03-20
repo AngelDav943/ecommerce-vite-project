@@ -24,11 +24,12 @@
 .preview.tile .item {
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .preview.icon {
     border-radius: 0.2rem;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     width: 200px;
     height: 200px;
     min-height: 200px;

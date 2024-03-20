@@ -4,6 +4,8 @@ import ProductApi from '../api/Product'
 const useProduct = () => {
     const itemsPerPage = 20
     const [products, setProducts] = useState(new Array(10).fill(undefined));
+    const [categories, setCategories] = useState([]);
+
     const [totalPages, setTotalPages] = useState(1);
 
     const getAllProducts = async (page = 0) => {
@@ -16,6 +18,18 @@ const useProduct = () => {
 
             setTotalPages(Math.ceil(apiResponse.data.total / itemsPerPage))
             setProducts(apiResponse.data.products)
+        } catch (error) {
+
+        }
+    }
+
+    const getAllCategories = async () => {
+        try {
+            const apiResponse = await ProductApi.get(`/categories`);
+
+            if (apiResponse["data"] == undefined) return;
+
+            setCategories(apiResponse.data)
         } catch (error) {
 
         }
@@ -53,6 +67,9 @@ const useProduct = () => {
         getProduct,
         getAllProducts,
         searchProduct,
+
+        categories,
+        getAllCategories,
     }
 }
 
