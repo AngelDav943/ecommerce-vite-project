@@ -1,0 +1,33 @@
+.gallery {
+    width: 100%;
+    max-width: calc(100dvw - 48px);
+}
+
+.gallery .list {
+    width: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+}
+
+.gallery .preview {
+    scroll-snap-align: start;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.5s;
+}
+
+.gallery .preview:hover {
+    opacity: 1;
+}
+
+.gallery .main_preview {
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    min-width: 100%;
+    object-fit: contain;
+}

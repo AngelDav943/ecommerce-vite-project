@@ -10,7 +10,8 @@ import {
     InputAdornment,
     Tooltip,
     Menu,
-    MenuItem
+    MenuItem,
+    Badge,
 } from '@mui/material';
 
 import { useNavigate, Link } from 'react-router-dom';
@@ -20,9 +21,11 @@ import TextButton from './TextButton';
 
 import { Search, Send, ShoppingCart } from '@mui/icons-material';
 import { useState } from 'react';
+import { useCart } from '../context/useCart';
 
 export default function SearchAppBar() {
     const { user, logout } = useInfo();
+    const { cart } = useCart();
 
     const navigate = useNavigate();
     function home() {
@@ -96,8 +99,10 @@ export default function SearchAppBar() {
                         onKeyUp={(e) => onKeyPress(e)}
                     />
 
-                    <Link to='/cart'>
-                        <ShoppingCart sx={{ color: 'white', margin: "0 1rem" }} />
+                    <Link to='/cart' >
+                        <Badge sx={{ margin: "0 1rem" }} badgeContent={Object.keys(cart).length} color="secondary">
+                            <ShoppingCart sx={{ color: 'white' }} />
+                        </Badge>
                     </Link>
 
                     {user ?

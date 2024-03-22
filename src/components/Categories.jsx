@@ -17,7 +17,7 @@ export default function Categories() {
         <Typography variant='h5'>Categories</Typography>
         <hr />
         {categories.map((category, index) => (
-            <TextButton key={index} label={category} expanded sx={{justifyContent:"flex-start"}}/>
+            <TextButton key={index} label={category} expanded sx={{justifyContent:"flex-start", color:'lightgray'}}/>
         ))}
     </Paper>
 }

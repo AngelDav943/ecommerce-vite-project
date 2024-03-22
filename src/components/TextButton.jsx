@@ -24,7 +24,7 @@ export default function TextButton({
             disabled={disabled}
             onClick={() => internalClick()}
             sx={{
-                width: expanded ? "100%" : "auto",
+                width: expanded == true ? "100%" : "auto",
                 textTransform: !capitalize ? "capitalize" : "uppercase",
                 ...sx
             }}

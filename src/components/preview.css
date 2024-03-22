@@ -28,12 +28,13 @@
 }
 
 .preview.icon {
+    --iconsize: calc(800px / 3);
     border-radius: 0.2rem;
     scroll-snap-align: start;
-    width: 200px;
-    height: 200px;
-    min-height: 200px;
-    min-width: 200px;
+    width: var(--iconsize);
+    height: var(--iconsize);
+    min-height: var(--iconsize);
+    min-width: var(--iconsize);
 }
 
 .preview.tile {
@@ -53,9 +54,9 @@
     z-index: 1;
     position: relative;
 
-    width: 200px;
-    height: 200px;
-    margin-top: -206px;
+    width: var(--iconsize);
+    height: var(--iconsize);
+    margin-top: calc(var(--iconsize) * -1 - 6px);
     padding: 1rem;
 
     display: flex;

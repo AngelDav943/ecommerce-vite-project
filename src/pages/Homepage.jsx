@@ -31,7 +31,7 @@ export default function () {
         <Stack direction='row' flexWrap='wrap' gap='1rem'>
             <Categories />
             <Stack flexGrow="1" flexBasis="500px">
-                {Array.from(Array(5).keys()).map(index => (
+                {Array.from(Array(6).keys()).map(index => (
                     <Preview key={index} product={products[index + 10]} variant='tile' />
                 ))}
                 <TextButton label='Discover more' to='/discover' expanded />

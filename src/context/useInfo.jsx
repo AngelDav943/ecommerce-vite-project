@@ -28,6 +28,7 @@ export function InfoProvider({ children }) {
     const provider = new GoogleAuthProvider();
 
     const [userData, setUserData] = useState(null);
+    const [userLoaded, setUserLoaded] = useState(false);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -35,6 +36,7 @@ export function InfoProvider({ children }) {
     const infoValues = {
         user: userData,
         setUser: (data) => {
+            setUserLoaded(false);
             if (data == null){
                 setUserData(null);
                 return;
@@ -52,6 +54,7 @@ export function InfoProvider({ children }) {
 
             localStorage.setItem("ecom_user", JSON.stringify(newUserData));
             setUserData(newUserData);
+            setUserLoaded(true);
         },
         googleSignIn: async () => {
             try {
